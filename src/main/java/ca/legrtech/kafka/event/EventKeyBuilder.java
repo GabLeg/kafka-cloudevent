@@ -1,16 +1,15 @@
 package ca.legrtech.kafka.event;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.TreeMap;
 
 public final class EventKeyBuilder {
 
     private static final String OBJECT_ID = "objectId";
 
-    private final Map<String, String> keyFields;
+    private final TreeMap<String, String> keyFields;
 
     private EventKeyBuilder() {
-        keyFields = new HashMap<>();
+        keyFields = new TreeMap<>();
     }
 
     public static EventKeyBuilder newBuilder() {

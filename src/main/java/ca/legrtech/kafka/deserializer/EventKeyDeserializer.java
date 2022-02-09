@@ -5,9 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.kafka.common.serialization.Deserializer;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.TreeMap;
 
 public class EventKeyDeserializer implements Deserializer<EventKey> {
 
@@ -23,7 +22,7 @@ public class EventKeyDeserializer implements Deserializer<EventKey> {
             return null;
         }
         try {
-            Map<String, String> map = new HashMap<>();
+            TreeMap<String, String> map = new TreeMap<>();
             ObjectNode root = (ObjectNode) objectMapper.readTree(key);
             Iterator<String> rootIterator = root.fieldNames();
             rootIterator.forEachRemaining(it -> map.put(it, root.get(it).textValue()));
